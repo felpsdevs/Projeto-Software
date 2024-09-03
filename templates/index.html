@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Lista de Tarefas</h1>
+        <form action="/add_task" method="post">
+            <input type="text" name="task_name" placeholder="Nova tarefa" required>
+            <input type="submit" value="Adicionar">
+        </form>
+        <ul>
+            {% for task in tasks %}
+                <li>{{ task[1] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
