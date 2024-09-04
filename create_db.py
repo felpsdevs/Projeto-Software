@@ -9,7 +9,7 @@ def create_db():
     )''')
     conn.commit()
     conn.close()
-    print("Banco de dados e tabela criados com sucesso.")
+    print("Banco ok.")
 
 if __name__ == "__main__":
     create_db()
