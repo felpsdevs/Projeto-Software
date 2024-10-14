@@ -13,10 +13,20 @@
             <input type="text" name="task" placeholder="Digite uma nova tarefa" required>
             <input type="submit" value="Adicionar">
         </form>
+    </div>
+
+    <div class="task-container"> 
         <ul>
             {% for task in tasks %}
-            <li>
+            <li class="{% if task['completed'] %}completed-task{% endif %}">
                 {{ task['name'] }}
+                {% if not task['completed'] %}
+                <form action="{{ url_for('concluir_tarefa', task_id=task['id']) }}" method="POST" style="display:inline;">
+                    <input type="submit" value="Concluir">
+                </form>
+                {% else %}
+                <span>Concluída</span>
+                {% endif %}
                 <form action="{{ url_for('delete', task_id=task['id']) }}" method="POST" style="display:inline;">
                     <input type="submit" value="Excluir">
                 </form>
