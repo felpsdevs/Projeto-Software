@@ -1,28 +1,63 @@
+/* Estilos gerais para ambos os temas */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('../static/Cenario\ 2.webp');
-    background-size: cover; 
-    background-position: center; 
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
+    background-attachment: fixed;
     min-height: 100vh;
+    transition: background-image 0.5s ease-in-out, background-color 0.2s ease-in-out;
+    color: #000; /* Cor de texto padrão */
 }
 
+/* Preload das imagens */
+body::before {
+    content: '';
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+    height: 1px;
+    width: 1px;
+    background-image: url('../static/Cenario 2.webp'), url('../static/Cenario 3.webp');
+    background-size: cover;
+}
+
+/* Tema Claro */
+body.light-mode {
+    background-image: url('../static/Cenario 2.webp');
+    color: #000; /* Cor de texto do tema claro */
+}
+
+/* Tema Escuro */
+body.dark-mode {
+    background-image: url('../static/Cenario 3.webp');
+    color: #FFF; /* Cor de texto do tema escuro */
+}
+
+/* Contêiner do formulário e lista de tarefas */
 .form-container, .task-container {
-    background: rgba(255, 255, 255, 0.8); 
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 500px;
-    margin: 20px auto; 
+    margin: 20px auto;
 }
 
-h1 {
+/* Cor fixa do título */
+.header-title {
+    color: #000; /* Preto fixo para todos os temas */
     text-align: center;
 }
 
+/* Cor fixa do texto das tarefas */
+.task-item {
+    color: #000; /* Preto fixo para todos os temas */
+}
+
+/* Estilos do formulário */
 form {
     display: flex;
     flex-direction: column;
@@ -51,6 +86,7 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 
+/* Estilos da lista de tarefas */
 ul {
     list-style-type: none;
     padding: 0;
@@ -72,4 +108,23 @@ li {
 span {
     color: green;
     font-weight: bold;
+}
+
+/* Botão de troca de tema */
+.theme-toggle {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: #45a049;
 }
