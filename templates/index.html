@@ -12,6 +12,11 @@
         
         <form action="{{ url_for('add') }}" method="POST">
             <input type="text" name="task" placeholder="Digite uma nova tarefa" required>
+            <select name="priority" required>
+                <option value="Baixa">Baixa</option>
+                <option value="Média">Média</option>
+                <option value="Alta">Alta</option>
+            </select>
             <input type="submit" value="Adicionar">
         </form>
     </div>
@@ -20,7 +25,7 @@
         <ul>
             {% for task in tasks %}
             <li class="task-item {% if task['completed'] %}completed-task{% endif %}">
-                {{ task['name'] }}
+                {{ task['name'] }} - Prioridade: {{ task['priority'] }}
                 {% if not task['completed'] %}
                 <form action="{{ url_for('concluir_tarefa', task_id=task['id']) }}" method="POST" style="display:inline;">
                     <input type="submit" value="Concluir">
@@ -63,9 +68,7 @@
             const themeToggleButton = document.querySelector('.theme-toggle');
             themeToggleButton.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙';
         }
-    </script>
 
-    <script>
         function updateDateTime() {
             const now = new Date();
             const dateOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };

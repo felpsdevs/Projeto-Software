@@ -17,21 +17,21 @@ app = Flask(__name__)
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT id, name, completed FROM tasks') 
+    cur.execute('SELECT id, name, completed, priority FROM tasks')  # Corrigido para incluir o campo 'priority'
     tasks = cur.fetchall()  
     cur.close()
     conn.close()
 
-    tasks_list = [{'id': task[0], 'name': task[1], 'completed': task[2]} for task in tasks] 
+    tasks_list = [{'id': task[0], 'name': task[1], 'completed': task[2], 'priority': task[3]} for task in tasks] 
     return render_template('index.html', tasks=tasks_list)
-
 
 @app.route('/add', methods=('POST',))
 def add():
     task = request.form['task']
+    priority = request.form['priority']
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('INSERT INTO tasks (name, completed) VALUES (%s, FALSE)', (task,)) 
+    cur.execute('INSERT INTO tasks (name, completed, priority) VALUES (%s, FALSE, %s)', (task, priority))
     conn.commit()
     cur.close()
     conn.close()
@@ -46,7 +46,6 @@ def delete(task_id):
     cur.close()
     conn.close()
     return redirect('/')
-
 
 @app.route('/concluir/<int:task_id>', methods=['POST'])
 def concluir_tarefa(task_id):

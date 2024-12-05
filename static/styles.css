@@ -12,14 +12,28 @@ body {
 }
 
 body.light-mode {
-    background-image: url('../static/Cenario 2.webp');
+    background-image: url('https://media.giphy.com/media/G6GfoJqCMSQaQ/giphy.gif');
+    background-size: cover;  /* Faz com que o GIF cubra todo o fundo */
+    background-position: center center; /* Centraliza a imagem */
+    background-repeat: no-repeat;
     color: #000;
 }
 
 body.dark-mode {
-    background-image: url('../static/Cenario 3.webp');
+    background-image: url('https://media.giphy.com/media/OCiZlf0CQNuFy/giphy.gif');
+    background-size: cover;  /* Faz com que o GIF cubra todo o fundo */
+    background-position: center center; /* Centraliza a imagem */
+    background-repeat: no-repeat;
     color: #FFF;
 }
+
+
+
+
+
+
+
+
 
 .form-container, .task-container {
     background: rgba(255, 255, 255, 0.8);
@@ -123,4 +137,28 @@ span {
 
 .date-time-icon {
     margin-right: 5px;
+}
+.date-time-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
+}
+
+.date-time-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+#date-time {
+    font-weight: bold;
+    font-size: 18px;
 }
