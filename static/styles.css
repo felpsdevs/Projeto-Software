@@ -13,16 +13,16 @@ body {
 
 body.light-mode {
     background-image: url('https://media.giphy.com/media/G6GfoJqCMSQaQ/giphy.gif');
-    background-size: cover;  /* Faz com que o GIF cubra todo o fundo */
-    background-position: center center; /* Centraliza a imagem */
+    background-size: cover; 
+    background-position: center center; 
     background-repeat: no-repeat;
     color: #000;
 }
 
 body.dark-mode {
     background-image: url('https://media.giphy.com/media/OCiZlf0CQNuFy/giphy.gif');
-    background-size: cover;  /* Faz com que o GIF cubra todo o fundo */
-    background-position: center center; /* Centraliza a imagem */
+    background-size: cover;  
+    background-position: center center; 
     background-repeat: no-repeat;
     color: #FFF;
 }
